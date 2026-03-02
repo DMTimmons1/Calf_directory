@@ -1,0 +1,49 @@
+<div class="page">
+  <% if @calf.errors.any? %>
+    <div class="flash flash-alert">
+      <strong><%= pluralize(@calf.errors.count, "error") %> prevented saving:</strong>
+      <ul>
+        <% @calf.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_with model: @calf, local: true, class: "form" do |f| %>
+    <div class="field">
+      <%= f.label :name, class: "label" %>
+      <%= f.text_field :name, class: "input", required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :birthdate, class: "label" %>
+      <%= f.date_field :birthdate, class: "input" %>
+      <div class="help-text">Optional — used to calculate age later.</div>
+    </div>
+
+    <div class="field">
+      <%= f.label :weight_lbs, "Weight (lbs)", class: "label" %>
+      <%= f.number_field :weight_lbs, class: "input", step: 0.1 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :status, class: "label" %>
+      <%= f.select :status,
+                   Calf.statuses.keys.map { |s| [s.titleize, s] },
+                   {},
+                   class: "input" %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit (@calf.persisted? ? "Save Changes" : "Create Calf"),
+                   class: "btn btn-primary btn-full" %>
+
+      <% if @calf.persisted? %>
+        <%= link_to "Cancel", calf_path(@calf), class: "btn btn-outline btn-full" %>
+      <% else %>
+        <%= link_to "Cancel", calves_path, class: "btn btn-outline btn-full" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

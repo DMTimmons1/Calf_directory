@@ -1,0 +1,52 @@
+<div class="page">
+  <h1 class="page-title">Calf Directory</h1>
+
+  <div class="actions">
+    <%= link_to "All Calves", calves_path, class: "btn" %>
+    <%= link_to "Sick Calves", calves_path(status: "sick"), class: "btn btn-outline" %>
+    <%= link_to "Add New Calf", new_calf_path, class: "btn btn-primary" %>
+  </div>
+
+  <%= form_with url: calves_path, method: :get, local: true, class: "search-form" do %>
+    <div class="field">
+      <%= label_tag :q, "Search by name", class: "label" %>
+      <%= text_field_tag :q, @query, class: "input", placeholder: "e.g., Daisy" %>
+    </div>
+
+    <div class="field">
+      <%= label_tag :status, "Filter by status", class: "label" %>
+      <%= select_tag :status,
+            options_for_select([["All statuses", ""]] + Calf.statuses.keys.map { |s| [s.titleize, s] }, @status),
+            class: "input" %>
+    </div>
+
+    <div class="search-actions">
+      <%= submit_tag "Search", class: "btn btn-primary btn-full" %>
+      <%= link_to "Clear", calves_path, class: "btn btn-outline btn-full" %>
+    </div>
+  <% end %>
+
+  <p class="count"><%= pluralize(@calves.count, "calf") %> found</p>
+
+  <ul class="calf-list">
+    <% @calves.each do |calf| %>
+      <li class="calf-card <%= 'calf-card--sick' if calf.sick? %>">
+        <%= link_to calf_path(calf), class: "calf-link" do %>
+          <div class="calf-row">
+            <span class="calf-name"><%= calf.name %></span>
+
+            <span class="status-badge <%= status_class(calf) %>">
+              <%= calf.status.titleize %>
+            </span>
+          </div>
+
+          <div class="calf-meta">
+            <% if calf.weight_lbs.present? %>
+              <span><%= calf.weight_lbs %> lbs</span>
+            <% end %>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>

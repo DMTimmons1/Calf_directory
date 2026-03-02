@@ -1,0 +1,433 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.input,
+.btn,
+select,
+textarea,
+.search-form input,
+.search-form select {
+  max-width: 100%;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  margin-left: 6px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.badge-sick {
+  background-color: #c62828;
+  color: white;
+}
+
+.calf-sick {
+  background-color: #fdecea;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+/* Layout */
+.page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.page-title {
+  margin: 0 0 12px 0;
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+/* Action buttons */
+.actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.action-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+/* button_to generates a form — normalize it */
+.delete-form {
+  margin: 0;
+}
+
+/* Make sure both buttons fill their grid cell */
+.action-row .btn,
+.action-row form,
+.action-row button {
+  width: 100%;
+}
+
+/* Safety: prevent overlap */
+.action-row * {
+  box-sizing: border-box;
+}
+
+/* Form */
+.search-form {
+  background: #f7f7f8;
+  border: 1px solid #e6e6ea;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.form-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+/* Make both submit + links fill their grid cells */
+.form-actions .btn,
+.form-actions input[type="submit"] {
+  width: 100%;
+}
+
+.field {
+  margin-bottom: 12px;
+}
+
+.label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #d8d8de;
+  font-size: 1rem;
+  background: #fff;
+}
+
+/* Search buttons */
+.search-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  text-align: center;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #d8d8de;
+  background: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  opacity: 0.95;
+}
+
+.btn-primary {
+  border-color: #1f6feb;
+  background: #1f6feb;
+  color: #fff;
+}
+
+.btn-outline {
+  background: #fff;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* List / cards */
+.count {
+  margin: 10px 0 12px 0;
+  color: #555;
+}
+
+.calf-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.calf-card {
+  border: 1px solid #e6e6ea;
+  border-radius: 14px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.calf-card--sick {
+  border-color: #f3b0b0;
+  background: #fff7f7;
+}
+
+.calf-link {
+  display: block;
+  padding: 14px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.calf-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.calf-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.calf-meta {
+  margin-top: 6px;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.badge-sick {
+  background: #c62828;
+  color: #fff;
+}
+
+/* Optional: make buttons row-based on larger screens */
+@media (min-width: 640px) {
+  .actions {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .form-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .search-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form {
+  background: #fff;
+  border: 1px solid #e6e6ea;
+  border-radius: 14px;
+  padding: 14px;
+}
+
+/* Flash messages */
+.flash {
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #e6e6ea;
+  background: #f7f7f8;
+}
+
+.flash-notice {
+  background: #f0f7ff;
+  border-color: #cfe3ff;
+}
+
+.flash-alert {
+  background: #fff3f3;
+  border-color: #ffd2d2;
+}
+
+/* Header */
+.header {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.subtle {
+  color: #666;
+  margin: 6px 0 0 0;
+}
+
+/* Pills + danger button */
+.pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  border: 1px solid #d8d8de;
+  background: #fff;
+  margin-right: 6px;
+}
+
+.btn-danger {
+  border-color: #c62828;
+  background: #c62828;
+  color: #fff;
+}
+
+/* Stats cards */
+.stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin: 10px 0 14px 0;
+}
+
+.stat-card {
+  border: 1px solid #e6e6ea;
+  border-radius: 14px;
+  background: #fff;
+  padding: 14px;
+}
+
+.stat-label {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.stat-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+/* Unified status badge */
+.status-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border: 1px solid transparent;
+}
+
+/* Sick = red */
+.status-sick {
+  background: #c62828;
+  color: #fff;
+}
+
+/* Healthy = green */
+.status-healthy {
+  background: #2e7d32;
+  color: #fff;
+}
+
+/* Dead / Sold / other = neutral */
+.status-neutral {
+  background: #fff;
+  color: #444;
+  border-color: #d8d8de;
+}
+
+/* Panel */
+.panel {
+  border: 1px solid #e6e6ea;
+  border-radius: 14px;
+  background: #fff;
+  margin: 14px 0;
+  overflow: hidden;
+}
+
+.panel-summary {
+  cursor: pointer;
+  padding: 14px;
+  font-weight: 700;
+}
+
+.panel-body {
+  padding: 14px;
+  border-top: 1px solid #e6e6ea;
+}
+
+.help-text {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 6px;
+}
+
+/* Timeline */
+.section-title {
+  margin: 16px 0 10px 0;
+  font-size: 1.2rem;
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.timeline-card {
+  border: 1px solid #e6e6ea;
+  border-radius: 14px;
+  background: #fff;
+  padding: 14px;
+}
+
+.timeline-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.timeline-time {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.timeline-body {
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.timeline-date {
+  margin: 14px 0 8px 0;
+  font-size: 0.95rem;
+  color: #444;
+  font-weight: 700;
+}
+
+/* Larger screens: show stats in 2-3 columns */
+@media (min-width: 640px) {
+  .header {
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
+
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
