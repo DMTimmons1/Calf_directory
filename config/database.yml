@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: calf_directory_production
-  username: calf_directory
-  password: <%= ENV["CALF_DIRECTORY_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
