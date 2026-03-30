@@ -4,15 +4,27 @@ class CalvesController < ApplicationController
   def index
     @query  = params[:q].to_s.strip
     @status = params[:status].to_s.strip
+    @view   = params[:view].to_s.strip.presence || "active"
 
     @calves = Calf.all
 
+    # Group filter: active vs inactive
+    case @view
+    when "inactive"
+      @calves = @calves.where(status: Calf.statuses.values_at("sold", "dead").compact)
+    else
+      @view = "active"
+      @calves = @calves.where(status: Calf.statuses.values_at("healthy", "sick").compact)
+    end
+
+    # Search by name
     if @query.present?
       @calves = @calves.where("name ILIKE ?", "%#{@query}%")
     end
 
-    if @status.present?
-      @calves = @calves.where(status: Calf.statuses[@status]) if Calf.statuses.key?(@status)
+    # Optional specific status filter within the selected group
+    if @status.present? && Calf.statuses.key?(@status)
+      @calves = @calves.where(status: Calf.statuses[@status])
     end
 
     @calves = @calves.order(:name)
